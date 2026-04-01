@@ -19,6 +19,7 @@ task_manager.py – logic for managing tasks
 main.py – CLI interface  
 tasks.txt – saved tasks
 
-## How to run
+## How to run tests
 
-python main.py
+```bash
+python -m pytest -v
