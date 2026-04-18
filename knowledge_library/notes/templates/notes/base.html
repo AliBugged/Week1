@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knowledge Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        a {
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .note {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .btn-create {
+            color: #2563eb;
+            border: 1px solid #2563eb;
+        }
+
+        .btn-edit {
+            color: #16a34a;
+            border: 1px solid #16a34a;
+        }
+
+        .btn-delete {
+            color: #dc2626;
+            border: 1px solid #dc2626;
+        }
+
+        .btn:hover {
+            background: #f3f4f6;
+        }
+
+        button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
