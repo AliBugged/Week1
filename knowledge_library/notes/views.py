@@ -2,11 +2,28 @@ from .forms import NoteForm
 from django.shortcuts import redirect, render#импортируем функцию render для отображения шаблонов 
 from .models import Note, Category  #импортируем модели из текущего приложения
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
-def note_list(request):#функция для отображения списка заметок
-    notes = Note.objects.all()#получаем все заметки из базы данных а база данных управляется через модели а модель Note описана в файле models.py
-    categories = Category.objects.all()#получаем все категории из базы данных
-    return render(request, 'notes/note_list.html', {'notes': notes, 'categories': categories})#возвращаем отрендеренный шаблон note_list.html и передаем в него контекст с заметками и категориями , проще говоря мы отображаем шаблон и передаем ему данные для отображения в виде словаря где ключи это имена переменных которые будут использоваться в шаблоне а значения это данные которые мы получили из базы данных и хотим отобразить в шаблоне
+def note_list(request):
+    category_id = request.GET.get('category')
+    query = request.GET.get('q')
+
+    notes = Note.objects.all()
+    categories = Category.objects.all()
+
+    if category_id:
+        notes = notes.filter(category_id=category_id)
+
+    if query:
+        notes = notes.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+
+    return render(request, 'notes/note_list.html', {
+        'notes': notes,
+        'categories': categories,
+        'query': query,
+    })
 
 def note_create(request):#начало где мы определяем функцию для создания новой заметки
     if request.method == 'POST':# если запрос был отправлен методом POST то мы обрабатываем данные формы 

@@ -1,7 +1,13 @@
-<h1>Create note</h1>
+{% extends 'notes/base.html' %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+{% block content %}
+    <h1>Create / Edit note</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Save</button>
+        <a class="btn btn-delete" href="{% url 'note_list' %}">Cancel</a>
+    </form>
+{% endblock %}
