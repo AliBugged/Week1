@@ -1,18 +1,24 @@
 {% extends 'notes/base.html' %}
 
 {% block content %}
-    <h1>Knowledge Library</h1>
+    <h1>Knowledge Archive</h1>
+    <p class="subtitle">A private collection of records, notes, and forbidden study materials.</p>
+<div class="archive-panel">
+    <p><strong>Operator:</strong> {{ user.username }}</p>
+    <p><strong>Records found:</strong> {{ notes|length }}</p>
+    <p><strong>Status:</strong> Archive unlocked</p>
+</div>
 
-    <a class="btn btn-create" href="{% url 'note_create' %}">Create new note</a>
+    <a class="btn btn-create" href="{% url 'note_create' %}">Write new record</a>
 
-    <form method="get">
-        <input type="text" name="q" placeholder="Search notes..." value="{{ query|default:'' }}">
+    <form method="get" class="search-form">
+        <input type="text" name="q" placeholder="Search the archive..." value="{{ query|default:'' }}">
         <button type="submit">Search</button>
     </form>
 
     <hr>
 
-    <h3>Categories</h3>
+    <h3>Archive Sections</h3>
 
     <a class="btn btn-create" href="{% url 'note_list' %}">All</a>
 
@@ -24,16 +30,23 @@
 
     <hr>
 
+    <div class="note-grid">
     {% for note in notes %}
-    <div class="note">
-        <h2>{{ note.title }}</h2>
-        <p>{{ note.content }}</p>
-        <p><strong>Category:</strong> {{ note.category }}</p>
+        <div class="note">
+            <p class="note-category">[ {{ note.category }} ]</p>
+            <p class="note-meta">Record ID: #{{ note.id }} · Status: sealed</p>
+            <h2>{{ note.title }}</h2>
+            <p>{{ note.content }}</p>
 
-        <a class="btn btn-edit" href="{% url 'note_update' note.id %}">Edit</a>
-        <a class="btn btn-delete" href="{% url 'note_delete' note.id %}">Delete</a>
-    </div>
-{% empty %}
-    <p>No notes found.</p>
-{% endfor %}
+            <div style="margin-top: 14px;">
+                <a class="btn btn-edit" href="{% url 'note_update' note.id %}">Edit</a>
+                <a class="btn btn-delete" href="{% url 'note_delete' note.id %}">Burn</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="empty-state">
+            No records found.
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

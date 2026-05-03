@@ -1,13 +1,16 @@
-{% extends 'notes/base.html' %}
-
 {% block content %}
-    <h1>Delete note</h1>
+    <h1>Burn Record</h1>
 
-    <p>Are you sure you want to delete <strong>"{{ note.title }}"</strong>?</p>
+    <p>Are you sure you want to burn this record:</p>
 
-    <form method="post">
+    <div class="note">
+        <h2>{{ note.title }}</h2>
+        <p>{{ note.content }}</p>
+    </div>
+
+    <form method="post" style="margin-top:15px;">
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
+        <button type="submit">Yes, burn it</button>
         <a class="btn btn-create" href="{% url 'note_list' %}">Cancel</a>
     </form>
 {% endblock %}

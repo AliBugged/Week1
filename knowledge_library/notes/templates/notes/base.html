@@ -1,98 +1,351 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Knowledge Library</title>
+    <title>Knowledge Archive</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            margin: 0;
-            padding: 0;
+        * {
+            box-sizing: border-box;
         }
 
-        .container {
-            width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 25px;
+        body {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background: #12100e;
+            color: #d8c8aa;
+        }
+
+        .app-layout {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+        }
+
+        .sidebar {
+            border-right: 1px solid #33271d;
+            background: #17130f;
+            padding: 28px 22px;
+            box-shadow: 6px 0 18px rgba(0, 0, 0, 0.25);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .brand {
+            margin-bottom: 30px;
+        }
+
+        .brand-title {
+            color: #d6a75c;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .brand-subtitle {
+            color: #8f7b5b;
+            font-size: 12px;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        .user-panel {
+            border: 1px solid #3f3023;
             border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 24px;
+            background: #1c1712;
+        }
+
+        .user-panel p {
+            margin: 0 0 10px 0;
+            color: #c4b28f;
+            font-size: 14px;
+        }
+
+        .nav-section-title {
+            color: #7f6b4e;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 22px 0 10px;
+        }
+
+        .nav-link {
+            display: block;
+            color: #cfa45f;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border: 1px solid transparent;
+            transition: background 0.2s, border 0.2s;
+        }
+
+        .nav-link:hover {
+            background: rgba(214, 167, 92, 0.08);
+            border: 1px solid #3f3023;
+        }
+
+        .main {
+            padding: 42px;
+        }
+
+        .content-shell {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .page-card {
+            border: 1px solid #3f3023;
+            background: #1a1511;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(70, 45, 28, 0.18);
+        }
+
+        h1 {
+            color: #d6a75c;
+            letter-spacing: 2px;
+            margin-top: 0;
+        }
+
+        h2, h3 {
+            color: #ded0b5;
+        }
+
+        .subtitle {
+            color: #9b8662;
+            font-size: 14px;
+            margin-top: -8px;
+            margin-bottom: 18px;
         }
 
         a {
             text-decoration: none;
-            margin-right: 10px;
+            color: #cfa45f;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #3f3023;
+            margin: 22px 0;
+        }
+
+        .archive-panel {
+            border: 1px solid #3f3023;
+            background: #15110e;
+            padding: 14px;
+            margin: 18px 0;
+            border-radius: 10px;
+            color: #9b8662;
+        }
+
+        .archive-panel p {
+            margin: 5px 0;
+        }
+
+        .note-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
         }
 
         .note {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 10px;
-            background: #fafafa;
+            border: 1px solid #4a3728;
+            padding: 18px;
+            border-radius: 14px;
+            background: #211a15;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+            transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .note:hover {
+            border: 1px solid #8b653c;
+            background: #241c16;
+            box-shadow: 0 0 16px rgba(150, 105, 55, 0.22);
+        }
+
+        .note h2 {
+            color: #d6a75c;
+            margin-top: 0;
+            letter-spacing: 1px;
+        }
+
+        .note p {
+            line-height: 1.5;
+        }
+
+        .note-category {
+            color: #b99155;
+            font-size: 13px;
+            margin-bottom: 8px;
         }
 
         .btn {
             display: inline-block;
             padding: 8px 14px;
-            border-radius: 8px;
+            border-radius: 9px;
             font-size: 14px;
             margin-top: 5px;
-        }
-
-        .btn-create {
-            color: #2563eb;
-            border: 1px solid #2563eb;
-        }
-
-        .btn-edit {
-            color: #16a34a;
-            border: 1px solid #16a34a;
-        }
-
-        .btn-delete {
-            color: #dc2626;
-            border: 1px solid #dc2626;
+            margin-right: 8px;
+            background: #241b14;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: background 0.2s, filter 0.2s;
         }
 
         .btn:hover {
-            background: #f3f4f6;
+            filter: brightness(1.12);
+        }
+
+        .btn-create {
+            color: #d6a75c;
+            border: 1px solid #d6a75c;
+        }
+
+        .btn-create:hover {
+            background: rgba(214, 167, 92, 0.12);
+        }
+
+        .btn-edit {
+            color: #91b982;
+            border: 1px solid #91b982;
+        }
+
+        .btn-edit:hover {
+            background: rgba(100, 180, 100, 0.12);
+        }
+
+        .btn-delete {
+            color: #c96d64;
+            border: 1px solid #c96d64;
+        }
+
+        .btn-delete:hover {
+            background: rgba(180, 50, 40, 0.12);
         }
 
         button {
             padding: 8px 14px;
-            border: none;
-            border-radius: 8px;
-            background: #2563eb;
-            color: white;
+            border: 1px solid #d6a75c;
+            border-radius: 9px;
+            background: #241b14;
+            color: #d6a75c;
             cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: background 0.2s, filter 0.2s;
+        }
+
+        button:hover {
+            background: #2c2118;
+            filter: brightness(1.08);
         }
 
         input, textarea, select {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 5px;
             margin-bottom: 12px;
-            box-sizing: border-box;
+            background: #14100d;
+            color: #d8c8aa;
+            border: 1px solid #3f3023;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #9f7846;
+            box-shadow: 0 0 8px rgba(160, 110, 60, 0.18);
+        }
+
+        .search-form {
+            margin-top: 18px;
+        }
+
+        .empty-state {
+            border: 1px dashed #3f3023;
+            border-radius: 14px;
+            padding: 24px;
+            color: #9b8662;
+            text-align: center;
+            background: #15110e;
+        }
+
+        @media (max-width: 900px) {
+            .app-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #33271d;
+            }
+
+            .main {
+                padding: 22px;
+            }
+
+            .note-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .note-meta {
+            color: #7f6b4e;
+            font-size: 12px;
+            margin-top: -4px;
+            margin-bottom: 14px;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        {% if user.is_authenticated %}
-            <p>Logged in as {{ user.username }}</p>
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-        {% else %}
-            <a class="btn btn-create" href="{% url 'login' %}">Login</a>
-            <a class="btn btn-edit" href="{% url 'register' %}">Register</a>
-        {% endif %}
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <h1 class="brand-title">Archive</h1>
+                <p class="brand-subtitle">
+                    Private knowledge records, sealed notes, and study fragments.
+                </p>
+            </div>
 
-        <hr>
+            <div class="user-panel">
+                {% if user.is_authenticated %}
+                    <p>Operator: {{ user.username }}</p>
 
-        {% block content %}
-        {% endblock %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <p>Access required</p>
+                    <a class="btn btn-create" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-edit" href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </div>
+
+            <div class="nav-section-title">Navigation</div>
+            <a class="nav-link" href="{% url 'note_list' %}">All Records</a>
+            <a class="nav-link" href="{% url 'note_create' %}">Write Record</a>
+
+            <div class="nav-section-title">Status</div>
+            <p class="brand-subtitle">System: online</p>
+            <p class="brand-subtitle">Access: private</p>
+        </aside>
+
+        <main class="main">
+            <div class="content-shell">
+                <div class="page-card">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
