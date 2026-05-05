@@ -8,63 +8,290 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #f6f7fb;
+            --bg-soft: #ffffff;
+            --sidebar-bg: rgba(255, 255, 255, 0.88);
+            --panel: rgba(255, 255, 255, 0.92);
+            --panel-soft: rgba(245, 247, 252, 0.88);
+            --card-bg: rgba(255, 255, 255, 0.94);
+            --text: #20242c;
+            --muted: #6a7280;
+            --border: rgba(30, 40, 60, 0.12);
+            --border-strong: rgba(30, 40, 60, 0.18);
+            --accent: #3b6eea;
+            --accent-soft: rgba(59, 110, 234, 0.10);
+            --edit: #23865f;
+            --edit-soft: rgba(35, 134, 95, 0.12);
+            --delete: #c94c4c;
+            --delete-soft: rgba(201, 76, 76, 0.12);
+            --input-bg: rgba(255, 255, 255, 0.92);
+            --shadow: 0 24px 70px rgba(35, 45, 70, 0.10);
+            --glow: rgba(59, 110, 234, 0.18);
+            --radius: 22px;
+            --font-main: 'Courier New', monospace;
+        }
+
+        body[data-theme="spring"] {
+            --bg: #f3fbf3;
+            --bg-soft: #ffffff;
+            --sidebar-bg: rgba(248, 255, 248, 0.90);
+            --panel: rgba(255, 255, 255, 0.92);
+            --panel-soft: rgba(239, 250, 239, 0.92);
+            --card-bg: rgba(255, 255, 255, 0.94);
+            --text: #1f3428;
+            --muted: #6c8a73;
+            --border: rgba(74, 137, 94, 0.20);
+            --border-strong: rgba(74, 137, 94, 0.30);
+            --accent: #57a773;
+            --accent-soft: rgba(87, 167, 115, 0.13);
+            --edit: #3b925f;
+            --edit-soft: rgba(59, 146, 95, 0.13);
+            --delete: #d06c86;
+            --delete-soft: rgba(208, 108, 134, 0.13);
+            --input-bg: #ffffff;
+            --shadow: 0 24px 70px rgba(87, 167, 115, 0.12);
+            --glow: rgba(255, 164, 196, 0.22);
+        }
+
+        body[data-theme="summer"] {
+            --bg: #fff7e6;
+            --bg-soft: #fffdf5;
+            --sidebar-bg: rgba(255, 250, 232, 0.92);
+            --panel: rgba(255, 253, 245, 0.94);
+            --panel-soft: rgba(255, 242, 205, 0.80);
+            --card-bg: rgba(255, 255, 250, 0.96);
+            --text: #3a2c12;
+            --muted: #9a7b3d;
+            --border: rgba(211, 145, 41, 0.24);
+            --border-strong: rgba(211, 145, 41, 0.34);
+            --accent: #e39822;
+            --accent-soft: rgba(227, 152, 34, 0.13);
+            --edit: #3aa86d;
+            --edit-soft: rgba(58, 168, 109, 0.13);
+            --delete: #d95f4f;
+            --delete-soft: rgba(217, 95, 79, 0.13);
+            --input-bg: #fffdf7;
+            --shadow: 0 24px 70px rgba(227, 152, 34, 0.15);
+            --glow: rgba(255, 205, 90, 0.35);
+        }
+
+        body[data-theme="autumn"] {
+            --bg: #251714;
+            --bg-soft: #301d18;
+            --sidebar-bg: rgba(45, 28, 23, 0.92);
+            --panel: rgba(55, 34, 28, 0.92);
+            --panel-soft: rgba(43, 27, 23, 0.92);
+            --card-bg: rgba(66, 39, 31, 0.94);
+            --text: #f3dec9;
+            --muted: #c69b78;
+            --border: rgba(188, 110, 55, 0.30);
+            --border-strong: rgba(188, 110, 55, 0.42);
+            --accent: #f0a04b;
+            --accent-soft: rgba(240, 160, 75, 0.13);
+            --edit: #d2b45f;
+            --edit-soft: rgba(210, 180, 95, 0.13);
+            --delete: #e07062;
+            --delete-soft: rgba(224, 112, 98, 0.13);
+            --input-bg: #2b1b17;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+            --glow: rgba(240, 120, 50, 0.24);
+        }
+
+        body[data-theme="winter"] {
+            --bg: #eaf4fb;
+            --bg-soft: #fafdff;
+            --sidebar-bg: rgba(239, 248, 255, 0.92);
+            --panel: rgba(250, 253, 255, 0.94);
+            --panel-soft: rgba(232, 244, 252, 0.88);
+            --card-bg: rgba(255, 255, 255, 0.96);
+            --text: #173246;
+            --muted: #6b8798;
+            --border: rgba(106, 155, 184, 0.25);
+            --border-strong: rgba(106, 155, 184, 0.38);
+            --accent: #4d95c7;
+            --accent-soft: rgba(77, 149, 199, 0.13);
+            --edit: #4aa3a2;
+            --edit-soft: rgba(74, 163, 162, 0.13);
+            --delete: #bf6f88;
+            --delete-soft: rgba(191, 111, 136, 0.13);
+            --input-bg: #ffffff;
+            --shadow: 0 24px 70px rgba(70, 130, 170, 0.14);
+            --glow: rgba(155, 210, 240, 0.35);
+        }
+
+        body[data-theme="archive"] {
+            --bg: #12100e;
+            --bg-soft: #17130f;
+            --sidebar-bg: rgba(23, 19, 15, 0.95);
+            --panel: rgba(26, 21, 17, 0.95);
+            --panel-soft: rgba(21, 17, 14, 0.95);
+            --card-bg: rgba(33, 26, 21, 0.96);
+            --text: #d8c8aa;
+            --muted: #9b8662;
+            --border: #3f3023;
+            --border-strong: #4a3728;
+            --accent: #d6a75c;
+            --accent-soft: rgba(214, 167, 92, 0.12);
+            --edit: #91b982;
+            --edit-soft: rgba(100, 180, 100, 0.12);
+            --delete: #c96d64;
+            --delete-soft: rgba(180, 50, 40, 0.12);
+            --input-bg: #14100d;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+            --glow: rgba(214, 167, 92, 0.18);
+        }
+
         body {
             margin: 0;
-            font-family: 'Courier New', monospace;
-            background: #12100e;
-            color: #d8c8aa;
+            min-height: 100vh;
+            font-family: var(--font-main);
+            background:
+                radial-gradient(circle at 18% 10%, var(--glow), transparent 28%),
+                radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.10), transparent 24%),
+                linear-gradient(135deg, var(--bg), var(--bg-soft));
+            color: var(--text);
+            transition: background 0.35s ease, color 0.25s ease;
+            overflow-x: hidden;
+        }
+
+        .season-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .season-particle {
+            position: absolute;
+            top: -40px;
+            opacity: 0.45;
+            font-size: 14px;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+
+            12% {
+                opacity: 0.45;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .app-layout {
+            position: relative;
+            z-index: 1;
             min-height: 100vh;
             display: grid;
-            grid-template-columns: 260px 1fr;
+            grid-template-columns: 280px 1fr;
         }
 
         .sidebar {
-            border-right: 1px solid #33271d;
-            background: #17130f;
+            border-right: 1px solid var(--border);
+            background: var(--sidebar-bg);
+            backdrop-filter: blur(18px);
             padding: 28px 22px;
-            box-shadow: 6px 0 18px rgba(0, 0, 0, 0.25);
             position: sticky;
             top: 0;
             height: 100vh;
+            box-shadow: 8px 0 30px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
 
         .brand {
-            margin-bottom: 30px;
+            margin-bottom: 26px;
+        }
+
+        .brand-kicker {
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
         }
 
         .brand-title {
-            color: #d6a75c;
-            font-size: 24px;
+            color: var(--accent);
+            font-size: 26px;
             letter-spacing: 2px;
             margin: 0;
         }
 
         .brand-subtitle {
-            color: #8f7b5b;
+            color: var(--muted);
             font-size: 12px;
             margin-top: 8px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        .user-panel {
-            border: 1px solid #3f3023;
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 24px;
-            background: #1c1712;
+        .user-panel,
+        .theme-box,
+        .season-card {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 15px;
+            margin-bottom: 18px;
+            background: var(--panel-soft);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
 
-        .user-panel p {
+        .user-panel p,
+        .theme-box p,
+        .season-card p {
             margin: 0 0 10px 0;
-            color: #c4b28f;
             font-size: 14px;
         }
 
+        .season-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .season-card::before {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: -35px;
+            top: -35px;
+            background: var(--accent-soft);
+            border-radius: 50%;
+        }
+
+        .season-name {
+            position: relative;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .season-text {
+            position: relative;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .theme-box label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
         .nav-section-title {
-            color: #7f6b4e;
+            color: var(--muted);
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -72,19 +299,21 @@
         }
 
         .nav-link {
-            display: block;
-            color: #cfa45f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
             text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 10px;
+            padding: 11px 12px;
+            border-radius: 14px;
             margin-bottom: 8px;
             border: 1px solid transparent;
             transition: background 0.2s, border 0.2s;
         }
 
         .nav-link:hover {
-            background: rgba(214, 167, 92, 0.08);
-            border: 1px solid #3f3023;
+            background: var(--accent-soft);
+            border: 1px solid var(--border);
         }
 
         .main {
@@ -92,30 +321,59 @@
         }
 
         .content-shell {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
         }
 
         .page-card {
-            border: 1px solid #3f3023;
-            background: #1a1511;
-            border-radius: 18px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(70, 45, 28, 0.18);
+            position: relative;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            backdrop-filter: blur(16px);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+            overflow: hidden;
+        }
+
+        .page-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, transparent, var(--accent-soft), transparent);
+            height: 1px;
+            top: 0;
+        }
+
+        .page-card::after {
+            content: "";
+            position: absolute;
+            right: -100px;
+            top: -100px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            filter: blur(12px);
+            opacity: 0.55;
+            pointer-events: none;
         }
 
         h1 {
-            color: #d6a75c;
+            color: var(--accent);
             letter-spacing: 2px;
             margin-top: 0;
         }
 
         h2, h3 {
-            color: #ded0b5;
+            color: var(--text);
         }
 
         .subtitle {
-            color: #9b8662;
+            color: var(--muted);
             font-size: 14px;
             margin-top: -8px;
             margin-bottom: 18px;
@@ -123,26 +381,39 @@
 
         a {
             text-decoration: none;
-            color: #cfa45f;
+            color: var(--accent);
         }
 
         hr {
             border: none;
-            border-top: 1px solid #3f3023;
+            border-top: 1px solid var(--border);
             margin: 22px 0;
         }
 
         .archive-panel {
-            border: 1px solid #3f3023;
-            background: #15110e;
-            padding: 14px;
+            position: relative;
+            border: 1px solid var(--border);
+            background: var(--panel-soft);
+            padding: 16px;
             margin: 18px 0;
-            border-radius: 10px;
-            color: #9b8662;
+            border-radius: 16px;
+            color: var(--muted);
+            overflow: hidden;
+        }
+
+        .archive-panel::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent);
+            opacity: 0.65;
         }
 
         .archive-panel p {
-            margin: 5px 0;
+            margin: 5px 0 5px 8px;
         }
 
         .note-grid {
@@ -152,22 +423,37 @@
         }
 
         .note {
-            border: 1px solid #4a3728;
+            position: relative;
+            border: 1px solid var(--border-strong);
             padding: 18px;
-            border-radius: 14px;
-            background: #211a15;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-            transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+            border-radius: 18px;
+            background: var(--card-bg);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+            transition: border 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+            overflow: hidden;
+        }
+
+        .note::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, var(--accent-soft), transparent 42%);
+            opacity: 0.75;
+        }
+
+        .note > * {
+            position: relative;
         }
 
         .note:hover {
-            border: 1px solid #8b653c;
-            background: #241c16;
-            box-shadow: 0 0 16px rgba(150, 105, 55, 0.22);
+            transform: translateY(-3px);
+            border: 1px solid var(--accent);
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.12);
         }
 
         .note h2 {
-            color: #d6a75c;
+            color: var(--accent);
             margin-top: 0;
             letter-spacing: 1px;
         }
@@ -177,89 +463,98 @@
         }
 
         .note-category {
-            color: #b99155;
+            color: var(--accent);
             font-size: 13px;
             margin-bottom: 8px;
+        }
+
+        .note-meta {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: -4px;
+            margin-bottom: 14px;
         }
 
         .btn {
             display: inline-block;
             padding: 8px 14px;
-            border-radius: 9px;
+            border-radius: 999px;
             font-size: 14px;
             margin-top: 5px;
             margin-right: 8px;
-            background: #241b14;
+            background: var(--panel-soft);
             cursor: pointer;
-            font-family: 'Courier New', monospace;
-            transition: background 0.2s, filter 0.2s;
+            font-family: var(--font-main);
+            transition: background 0.2s, filter 0.2s, transform 0.2s;
         }
 
         .btn:hover {
-            filter: brightness(1.12);
+            filter: brightness(1.08);
+            transform: translateY(-1px);
         }
 
         .btn-create {
-            color: #d6a75c;
-            border: 1px solid #d6a75c;
+            color: var(--accent);
+            border: 1px solid var(--accent);
         }
 
         .btn-create:hover {
-            background: rgba(214, 167, 92, 0.12);
+            background: var(--accent-soft);
         }
 
         .btn-edit {
-            color: #91b982;
-            border: 1px solid #91b982;
+            color: var(--edit);
+            border: 1px solid var(--edit);
         }
 
         .btn-edit:hover {
-            background: rgba(100, 180, 100, 0.12);
+            background: var(--edit-soft);
         }
 
         .btn-delete {
-            color: #c96d64;
-            border: 1px solid #c96d64;
+            color: var(--delete);
+            border: 1px solid var(--delete);
         }
 
         .btn-delete:hover {
-            background: rgba(180, 50, 40, 0.12);
+            background: var(--delete-soft);
         }
 
         button {
             padding: 8px 14px;
-            border: 1px solid #d6a75c;
-            border-radius: 9px;
-            background: #241b14;
-            color: #d6a75c;
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            background: var(--panel-soft);
+            color: var(--accent);
             cursor: pointer;
-            font-family: 'Courier New', monospace;
-            transition: background 0.2s, filter 0.2s;
+            font-family: var(--font-main);
+            transition: background 0.2s, filter 0.2s, transform 0.2s;
         }
 
         button:hover {
-            background: #2c2118;
             filter: brightness(1.08);
+            transform: translateY(-1px);
         }
 
         input, textarea, select {
             width: 100%;
-            padding: 10px;
+            padding: 11px 12px;
             margin-top: 5px;
             margin-bottom: 12px;
-            background: #14100d;
-            color: #d8c8aa;
-            border: 1px solid #3f3023;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
+            background: var(--input-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-family: var(--font-main);
+            transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
         }
 
         input:focus,
         textarea:focus,
         select:focus {
             outline: none;
-            border-color: #9f7846;
-            box-shadow: 0 0 8px rgba(160, 110, 60, 0.18);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
         }
 
         .search-form {
@@ -267,12 +562,12 @@
         }
 
         .empty-state {
-            border: 1px dashed #3f3023;
-            border-radius: 14px;
+            border: 1px dashed var(--border);
+            border-radius: 18px;
             padding: 24px;
-            color: #9b8662;
+            color: var(--muted);
             text-align: center;
-            background: #15110e;
+            background: var(--panel-soft);
         }
 
         @media (max-width: 900px) {
@@ -284,7 +579,7 @@
                 position: static;
                 height: auto;
                 border-right: none;
-                border-bottom: 1px solid #33271d;
+                border-bottom: 1px solid var(--border);
             }
 
             .main {
@@ -295,22 +590,19 @@
                 grid-template-columns: 1fr;
             }
         }
-        .note-meta {
-            color: #7f6b4e;
-            font-size: 12px;
-            margin-top: -4px;
-            margin-bottom: 14px;
-        }
     </style>
 </head>
 
-<body>
+<body data-theme="spring">
+    <div class="season-layer" id="season-layer"></div>
+
     <div class="app-layout">
         <aside class="sidebar">
             <div class="brand">
+                <div class="brand-kicker">Knowledge System</div>
                 <h1 class="brand-title">Archive</h1>
                 <p class="brand-subtitle">
-                    Private knowledge records, sealed notes, and study fragments.
+                    Private records, study notes, and organized fragments of knowledge.
                 </p>
             </div>
 
@@ -329,9 +621,28 @@
                 {% endif %}
             </div>
 
+            <div class="theme-box">
+                <label for="theme-select">Season mode</label>
+                <select id="theme-select">
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="autumn">Autumn</option>
+                    <option value="winter">Winter</option>
+                    <option value="archive">Archive</option>
+                </select>
+            </div>
+
+            <div class="season-card">
+                <div class="season-name" id="season-name">Spring Archive</div>
+                <div class="season-text" id="season-text">
+                    Soft mode for calm study and fresh records.
+                </div>
+            </div>
+
             <div class="nav-section-title">Navigation</div>
-            <a class="nav-link" href="{% url 'note_list' %}">All Records</a>
-            <a class="nav-link" href="{% url 'note_create' %}">Write Record</a>
+            <a class="nav-link" href="{% url 'note_list' %}">✦ All Records</a>
+            <a class="nav-link" href="{% url 'note_create' %}">✦ Write Record</a>
+            <a class="nav-link" href="{% url 'category_create' %}">✦ Create Category</a>
 
             <div class="nav-section-title">Status</div>
             <p class="brand-subtitle">System: online</p>
@@ -347,5 +658,89 @@
             </div>
         </main>
     </div>
+    <script>
+    const themeSelect = document.getElementById('theme-select');
+    const seasonName = document.getElementById('season-name');
+    const seasonText = document.getElementById('season-text');
+    const seasonLayer = document.getElementById('season-layer');
+
+    const seasons = {
+        spring: {
+            name: 'Spring Archive',
+            text: 'Fresh, soft and calm mode for light study sessions.',
+            particles: ['✿', '❀', '·']
+        },
+        summer: {
+            name: 'Summer Archive',
+            text: 'Warm bright mode for active work and fast note writing.',
+            particles: ['☀', '✦', '·']
+        },
+        autumn: {
+            name: 'Autumn Archive',
+            text: 'Deep warm mode for long focused sessions and serious records.',
+            particles: ['🍂', '✧', '·']
+        },
+        winter: {
+            name: 'Winter Archive',
+            text: 'Cold clean mode for quiet concentration and minimal noise.',
+            particles: ['❄', '✦', '·']
+        },
+        archive: {
+            name: 'Classic Archive',
+            text: 'Dark sealed mode for private records and forbidden study materials.',
+            particles: ['✦', '✧', '·']
+        }
+    };
+
+    function getSafeTheme(theme) {
+        if (!theme || !seasons[theme]) {
+            return 'spring';
+        }
+
+        return theme;
+    }
+
+    function renderParticles(theme) {
+        seasonLayer.innerHTML = '';
+
+        const safeTheme = getSafeTheme(theme);
+        const symbols = seasons[safeTheme].particles;
+
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('span');
+
+            particle.className = 'season-particle';
+            particle.textContent = symbols[i % symbols.length];
+
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (10 + Math.random() * 12) + 's';
+            particle.style.animationDelay = (Math.random() * 8) + 's';
+            particle.style.fontSize = (10 + Math.random() * 8) + 'px';
+
+            seasonLayer.appendChild(particle);
+        }
+    }
+
+    function applyTheme(theme) {
+        const safeTheme = getSafeTheme(theme);
+
+        document.body.setAttribute('data-theme', safeTheme);
+        localStorage.setItem('archiveTheme', safeTheme);
+
+        themeSelect.value = safeTheme;
+        seasonName.textContent = seasons[safeTheme].name;
+        seasonText.textContent = seasons[safeTheme].text;
+
+        renderParticles(safeTheme);
+    }
+
+    const savedTheme = getSafeTheme(localStorage.getItem('archiveTheme'));
+
+    applyTheme(savedTheme);
+
+    themeSelect.addEventListener('change', function () {
+        applyTheme(this.value);
+    });
+</script>
 </body>
 </html>

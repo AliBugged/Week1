@@ -1,0 +1,16 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+    <h1>Create Category</h1>
+    <p class="subtitle">Create a private section for your records.</p>
+
+    <div class="note">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Save category</button>
+            <a class="btn btn-delete" href="{% url 'note_list' %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

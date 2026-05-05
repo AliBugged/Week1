@@ -1,14 +1,18 @@
+{% extends 'notes/base.html' %}
+
 {% block content %}
     <h1>Burn Record</h1>
 
-    <p>Are you sure you want to burn this record:</p>
+    <p class="subtitle">This action cannot be undone. The record will be removed from the archive.</p>
 
     <div class="note">
+        <p class="note-category">[ {{ note.category }} ]</p>
         <h2>{{ note.title }}</h2>
         <p>{{ note.content }}</p>
+        <p class="note-meta">Record ID: #{{ note.id }} · Status: marked for burning</p>
     </div>
 
-    <form method="post" style="margin-top:15px;">
+    <form method="post" style="margin-top: 18px;">
         {% csrf_token %}
         <button type="submit">Yes, burn it</button>
         <a class="btn btn-create" href="{% url 'note_list' %}">Cancel</a>

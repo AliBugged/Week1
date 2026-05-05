@@ -61,7 +61,7 @@ def test_note_list_requires_login(client):
 @pytest.mark.django_db
 def test_create_note_sets_current_user(client):
     user = User.objects.create_user(username='creator', password='Testpass12345')
-    category = Category.objects.create(name='Study')
+    category = Category.objects.create(user=user, name='Study')
 
     client.login(username='creator', password='Testpass12345')
 

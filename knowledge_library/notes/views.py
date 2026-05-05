@@ -1,4 +1,4 @@
-from .forms import NoteForm
+from .forms import NoteForm, CategoryForm
 from django.shortcuts import redirect, render#импортируем функцию render для отображения шаблонов 
 from .models import Note, Category  #импортируем модели из текущего приложения
 from django.shortcuts import get_object_or_404
@@ -11,7 +11,7 @@ def note_list(request):
     query = request.GET.get('q')
 
     notes = Note.objects.filter(user=request.user)
-    categories = Category.objects.all()
+    categories = Category.objects.filter(user=request.user)
 
     if category_id:
         notes = notes.filter(category_id=category_id)
@@ -30,7 +30,7 @@ def note_list(request):
 @login_required
 def note_create(request):
     if request.method == 'POST':
-        form = NoteForm(request.POST)
+        form = NoteForm(request.POST, user=request.user)
 
         if form.is_valid():
             note = form.save(commit=False)
@@ -47,7 +47,7 @@ def note_update(request, note_id):#функция для обновление
     note = get_object_or_404(Note, id=note_id, user=request.user)#получаем заметку по id если заметка не найдется то будет ошибка 404
 
     if request.method == 'POST':# если запрос был отправлен методом POST то мы обрабатываем данные формы 
-        form = NoteForm(request.POST, instance=note)#создаю form и внутри него будут дааные которые были отправлены после того как он добавил форму также чтобы можно было обновлять существующие заметки нужен instance=note при помощи которого ты можем обновлять существующие заметки а не создавать новые 
+        form = NoteForm(request.POST, instance=note, user=request.user)#создаю form и внутри него будут дааные которые были отправлены после того как он добавил форму также чтобы можно было обновлять существующие заметки нужен instance=note при помощи которого ты можем обновлять существующие заметки а не создавать новые 
         if form.is_valid():#если все ок то сохраняем изменения в базе данных
             note = form.save(commit=False)
             note.user = request.user
@@ -67,3 +67,18 @@ def note_delete(request, note_id):
         return redirect('note_list')
 
     return render(request, 'notes/note_confirm_delete.html', {'note': note})
+
+@login_required
+def category_create(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.user = request.user
+            category.save()
+            return redirect('note_list')
+    else:
+        form = CategoryForm()
+
+    return render(request, 'notes/category_form.html', {'form': form})
